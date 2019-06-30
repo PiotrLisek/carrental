@@ -6,12 +6,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -41,5 +39,30 @@ public class CustomerController {
 
         model.addAttribute("customers", customers);
         return "customer/list";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editCustomerForm(@PathVariable("id") Integer id, Model model) {
+        Optional<Customer> maybeCustomer = customerService.getCustomerById(id);
+
+        if (maybeCustomer.isPresent()) {
+            model.addAttribute("customer", maybeCustomer.get());
+            return "customer/edit-form";
+        } else {
+            return "redirect:/customer/create";
+        }
+    }
+
+    @PostMapping("/edit/{id}")
+    public String editCustomer(@ModelAttribute("customer") Customer customer) {
+        customerService.editCustomer(customer);
+
+        return "redirect:/customer/list";
+    }
+
+    @GetMapping("/delete-customer")
+    public String deleteCustomer(@RequestParam("id") Integer id) {
+        customerService.deleteById(id);
+        return "redirect:/customer/list";
     }
 }

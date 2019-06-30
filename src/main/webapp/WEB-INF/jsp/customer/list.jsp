@@ -15,7 +15,7 @@
     First name: ${customer.firstName}<br />
     Last name: ${customer.lastName} <br />
     Phone number: ${customer.phoneNumber} <br />
-    Address: ${customer.address} <br />
+    Address: ${customer.address} <br /><br />
     <a href="edit/${customer.id}">Edit</a> |
     <a href="delete-customer?id=${customer.id}">Delete</a>
     <br /><br /><br />

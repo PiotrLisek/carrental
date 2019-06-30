@@ -1,0 +1,24 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookings list</title>
+</head>
+<body>
+<%@include file="../fragments/header.jspf" %>
+<h2>Bookings list</h2>
+
+<c:forEach items="${bookings}" var="booking">
+    Date of booking: ${booking.dateOfBooking}<br />
+    Beginning of rent: ${booking.beginningOfRent} <br />
+    End of rent: ${booking.endOfRent} <br />
+    Price: ${booking.price} <br /><br />
+    <a href="edit/${booking.id}">Edit</a> |
+    <a href="delete-booking?id=${booking.id}">Delete</a>
+    <br /><br /><br />
+</c:forEach>
+</body>
+</html>
