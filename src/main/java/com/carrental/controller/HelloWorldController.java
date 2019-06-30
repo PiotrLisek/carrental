@@ -11,9 +11,4 @@ public class HelloWorldController {
         return "Hello World!";
     }
 
-
-@GetMapping("/gda")
-    public String hellogda() {
-        return "Hello World!";
-    }
 }

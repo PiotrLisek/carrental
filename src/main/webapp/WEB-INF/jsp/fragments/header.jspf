@@ -1,0 +1,19 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car rental</title>
+</head>
+<body>
+
+<h1>CAR RENTAL</h1>
+
+<a  href="../customer/create">Add customer</a> |
+<a href="../customer/list">Customers</a><br/><br/>
+
+<br />
+
+</body>
+</html>
