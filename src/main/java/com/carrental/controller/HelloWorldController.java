@@ -10,4 +10,10 @@ public class HelloWorldController {
     public String helloWorld() {
         return "Hello World!";
     }
+
+
+@GetMapping("/gda")
+    public String hellogda() {
+        return "Hello World!";
+    }
 }
