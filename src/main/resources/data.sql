@@ -1,1 +1,2 @@
 INSERT INTO customer VALUES('1','Gdansk','John','Doe','801515000');
+INSERT INTO booking VALUES('1','01.01.2019','24.12.2018','08.01.2019','500');
