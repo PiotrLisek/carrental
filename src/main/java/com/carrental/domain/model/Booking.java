@@ -7,20 +7,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-//@Entity
-//@Data
-public class Book {
+@Entity
+@Data
+public class Booking {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Integer id;
-//
-//    private String dateOfBooking;
-//    private String beginningDate;
-//    private String finishDate;
-//    private Integer price;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String dateOfBooking;
+    private String beginningOfRent;
+    private String endOfRent;
+    private Integer price;
 //    private Customer customer;
 
+//    TODO: make relationships
 //    private Car car;
 //    private Department department;
 }
