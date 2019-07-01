@@ -2,10 +2,7 @@ package com.carrental.domain.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -19,7 +16,12 @@ public class Booking {
     private String beginningOfRent;
     private String endOfRent;
     private Integer price;
-//    private Customer customer;
+
+    @ManyToOne
+    private Customer customer;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Rent rent;
 
 //    TODO: make relationships
 //    private Car car;

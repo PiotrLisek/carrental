@@ -12,6 +12,7 @@
 <h2>Bookings list</h2>
 
 <c:forEach items="${bookings}" var="booking">
+    Customer: ${booking.customer.firstName} ${booking.customer.lastName}<br />
     Date of booking: ${booking.dateOfBooking}<br />
     Beginning of rent: ${booking.beginningOfRent} <br />
     End of rent: ${booking.endOfRent} <br />
