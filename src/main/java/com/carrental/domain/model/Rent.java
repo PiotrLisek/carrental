@@ -2,10 +2,7 @@ package com.carrental.domain.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -15,7 +12,8 @@ public class Rent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String beginningOfRental;
     private String notes;
-    //private Integer idOfBooking;
+
+    @OneToOne(mappedBy = "rent")
+    private Booking booking;
 }

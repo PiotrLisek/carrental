@@ -1,6 +1,8 @@
 package com.carrental.controller;
 
+import com.carrental.domain.model.Booking;
 import com.carrental.domain.model.Customer;
+import com.carrental.service.BookingService;
 import com.carrental.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,7 @@ import java.util.Optional;
 public class CustomerController {
 
     private final CustomerService customerService;
+//    private final BookingService bookingService;
 
     @GetMapping("/create")
     public String createCustomerForm(Model model) {

@@ -10,8 +10,10 @@
 <%@include file="../fragments/header.jspf" %>
 <h2>Create rent form</h2>
 <form:form action="/rent/create" method="POST" modelAttribute="rent">
-    ID:  <br />
-    <%--Beginning of rental: <form:input path="rent.beginningOfRental"/> <br />--%>
+    Rent ID: ${rent.id}<br />
+    Customer: ${rent.booking.customer.firstName} ${rent.booking.customer.lastName}<br />
+    Beginning of rent: ${rent.booking.beginningOfRent} <br />
+    End of rent: ${rent.booking.endOfRent} <br />
     Notes: <form:input path="notes"/> <br />
     <input type="submit" value="Create"/>
 </form:form>
