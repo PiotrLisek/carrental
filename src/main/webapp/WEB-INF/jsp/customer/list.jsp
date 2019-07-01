@@ -19,6 +19,15 @@
     <a href="edit/${customer.id}">Edit</a> |
     <a href="delete-customer?id=${customer.id}">Delete</a>
     <br /><br /><br />
+    <c:forEach items="${customer.bookings}" var="booking">
+        Date of booking: ${booking.dateOfBooking}<br />
+        Beginning of rent: ${booking.beginningOfRent} <br />
+        End of rent: ${booking.endOfRent} <br />
+        Price: ${booking.price} <br /><br />
+        <a href="edit/${booking.id}">Edit</a> |
+        <a href="delete-booking?id=${booking.id}">Delete</a>
+        <br /><br /><br />
+    </c:forEach>
 </c:forEach>
 </body>
 </html>

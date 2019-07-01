@@ -2,10 +2,8 @@ package com.carrental.domain.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,5 +17,8 @@ public class Customer {
     private String lastName;
     private String phoneNumber;
     private String address;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer")
+    private List<Booking> bookings;
 
 }

@@ -12,8 +12,10 @@
 <h2>Rents list</h2>
 
 <c:forEach items="${rents}" var="rent">
-    ID: ${rent.id}<br />
-    Beginning of rental: ${booking.beginningOfRental} <br />
+    Rent ID: ${rent.id}<br />
+    Customer: ${rent.booking.customer.firstName} ${rent.booking.customer.lastName}<br />
+    Beginning of rent: ${rent.booking.beginningOfRent} <br />
+    End of rent: ${rent.booking.endOfRent} <br />
     Notes: ${rent.notes} <br />
     <a href="edit/${rent.id}">Edit</a> |
     <a href="delete-rent?id=${rent.id}">Delete</a>
