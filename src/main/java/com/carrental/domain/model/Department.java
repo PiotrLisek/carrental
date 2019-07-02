@@ -1,14 +1,11 @@
-package com.carrental.domain.model.rentDepartment;
+package com.carrental.domain.model;
 
 import com.carrental.domain.model.car.Car;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -24,6 +21,9 @@ public class Department {
     private String name;
     private String address;
     private String city;
-//    private List<Car>cars;
+
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "department")
+//    private List<Car> cars;
+
 
 }

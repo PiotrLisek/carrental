@@ -1,7 +1,6 @@
 package com.carrental.service;
 
 import com.carrental.domain.model.car.Car;
-import com.carrental.domain.model.rentDepartment.Department;
 import com.carrental.domain.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,7 +30,7 @@ public class CarService {
         carRepository.save(car);
     }
 
-    public void deleteCar (Integer id){
+    public void deleteById (Integer id){
         carRepository.deleteById(id);
     }
 }

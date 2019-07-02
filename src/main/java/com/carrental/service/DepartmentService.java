@@ -1,6 +1,6 @@
 package com.carrental.service;
 
-import com.carrental.domain.model.rentDepartment.Department;
+import com.carrental.domain.model.Department;
 import com.carrental.domain.repository.DepartmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,6 @@ public class DepartmentService {
         departmentRepository.save(department);
     }
 
-
     public List<Department> getAllDepartments(){
         return departmentRepository.findAll();
     }
@@ -31,7 +30,7 @@ public class DepartmentService {
         departmentRepository.save(department);
     }
 
-    public void deleteDepartment (Integer id){
+    public void deleteById (Integer id){
         departmentRepository.deleteById(id);
     }
 

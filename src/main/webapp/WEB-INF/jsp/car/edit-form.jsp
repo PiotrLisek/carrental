@@ -1,15 +1,14 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create car</title>
+    <title>Edit car</title>
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
-<h2>Create car form</h2>
-<form:form action="/car/create" method="POST" modelAttribute="car">
+<h2>Edit car form</h2>
+<form:form action="/car/edit/${car.id}" method="POST" modelAttribute="car">
     Company: <form:input path="company"/> <br />
     Model: <form:input path="model"/> <br />
     Category: <form:input path="category"/> <br />
@@ -19,7 +18,8 @@
     Status: <form:input path="status"/> <br />
     Price per day: <form:input path="pricePerDay"/> <br />
     <%--Department: <form:input path="department"/> <br />--%>
-    <input type="submit" value="Create"/>
+    <form:hidden path="id" />
+    <input type="submit" value="Save"/>
 </form:form>
 </body>
 </html>

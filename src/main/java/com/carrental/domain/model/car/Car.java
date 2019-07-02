@@ -1,13 +1,11 @@
 package com.carrental.domain.model.car;
 
+import com.carrental.domain.model.Department;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -19,13 +17,15 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String marka;
+    private String company;
     private String model;
-    private Category category;
+    private String category;
     private Integer year;
-    private String collor;
-    private Integer distance;
-    private Status status;
+    private String color;
+    private Integer mileage;
+    private String status;
     private Double pricePerDay;
 
+//    @ManyToOne
+//    private Department department;
 }

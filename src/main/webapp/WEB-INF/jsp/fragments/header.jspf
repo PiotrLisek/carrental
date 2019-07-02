@@ -10,6 +10,8 @@
 
 <h1>CAR RENTAL</h1>
 
+<a  href="../car/create">Add car</a> |
+<a href="../car/list">Cars</a> |
 <a  href="../customer/create">Add customer</a> |
 <a href="../customer/list">Customers</a> |
 <a  href="../booking/create">Add booking</a> |

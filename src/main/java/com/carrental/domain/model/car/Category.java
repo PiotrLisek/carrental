@@ -2,5 +2,5 @@ package com.carrental.domain.model.car;
 
 public enum Category {
 
-    SEDAN,KOMBI,CABRIO;
+    SEDAN, KOMBI, CABRIO, HATCHBACK;
 }
