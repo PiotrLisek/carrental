@@ -1,7 +1,9 @@
 package com.carrental.controller;
 
+import com.carrental.domain.model.Department;
 import com.carrental.domain.model.car.Car;
 import com.carrental.service.CarService;
+import com.carrental.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -18,16 +20,38 @@ import java.util.Optional;
 public class CarController {
 
     private final CarService carService;
+    private final DepartmentService departmentService;
 
     @GetMapping("/create")
     public String createCarForm(Model model) {
+        List<Department> departments = departmentService.getAllDepartments();
+
+        model.addAttribute("departments",departments);
         model.addAttribute("car", new Car());
         return "car/form";
     }
 
     @PostMapping("/create")
-    public String createRent(@ModelAttribute("rent") Car car) {
+    public String createCar(@ModelAttribute("car") Car car) {
         carService.createCar(car);
+        log.info("Created new car {}", car);
+
+        return "redirect:/car/list";
+    }
+
+    @GetMapping("/create/{departmentId}")
+    public String createCarFormWithId(Model model, @PathVariable("departmentId") Integer departmentId) {
+        List<Department> departments = departmentService.getAllDepartments();
+
+        model.addAttribute("departments",departments);
+        model.addAttribute("departmentId", departmentId);
+        model.addAttribute("car", new Car());
+        return "car/form-with-id";
+    }
+
+    @PostMapping("/create/{departmentId}")
+    public String createCarWithId(@ModelAttribute("car") Car car, @PathVariable("departmentId") Integer departmentId) {
+        carService.createCar(car, departmentId);
         log.info("Created new car {}", car);
 
         return "redirect:/car/list";
@@ -36,6 +60,8 @@ public class CarController {
     @GetMapping("/list")
     public String carList(Model model) {
         List<Car> cars = carService.getAllCars();
+        List<Department> departments = departmentService.getAllDepartments();
+
 
         model.addAttribute("cars", cars);
         return "car/list";

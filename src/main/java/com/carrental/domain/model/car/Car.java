@@ -26,6 +26,6 @@ public class Car {
     private String status;
     private Double pricePerDay;
 
-//    @ManyToOne
-//    private Department department;
+    @ManyToOne
+    private Department department;
 }

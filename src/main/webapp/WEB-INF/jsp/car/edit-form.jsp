@@ -17,7 +17,7 @@
     Mileage: <form:input path="mileage"/> <br />
     Status: <form:input path="status"/> <br />
     Price per day: <form:input path="pricePerDay"/> <br />
-    <%--Department: <form:input path="department"/> <br />--%>
+    Department: ${car.department.name} - ${car.department.address} ${car.department.city} <br />
     <form:hidden path="id" />
     <input type="submit" value="Save"/>
 </form:form>

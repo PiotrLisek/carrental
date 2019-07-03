@@ -9,7 +9,7 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Create car form</h2>
-<form:form action="/car/create" method="POST" modelAttribute="car">
+<form:form action="/car/create/{departmentId}" method="POST" modelAttribute="car">
     Company: <form:input path="company"/> <br />
     Model: <form:input path="model"/> <br />
     Category: <form:input path="category"/> <br />

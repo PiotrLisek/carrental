@@ -22,8 +22,8 @@ public class Department {
     private String address;
     private String city;
 
-//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "department")
-//    private List<Car> cars;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "department")
+    private List<Car> cars;
 
 
 }

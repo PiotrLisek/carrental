@@ -1,7 +1,9 @@
 package com.carrental.service;
 
+import com.carrental.domain.model.Department;
 import com.carrental.domain.model.car.Car;
 import com.carrental.domain.repository.CarRepository;
+import com.carrental.domain.repository.DepartmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +15,20 @@ import java.util.Optional;
 public class CarService {
 
     private final CarRepository carRepository;
+    private final DepartmentService departmentService;
 
-    public List<Car> getAllCars(){
-        return carRepository.findAll();
-    }
+    public void createCar(Car car){ carRepository.save(car); }
 
-    public void createCar(Car car){
+    public void createCar(Car car, Integer departmentId){
+
+        Optional<Department> department = departmentService.getDepartmentById(departmentId);
+
+        department.ifPresent(car::setDepartment);
+
         carRepository.save(car);
     }
+
+    public List<Car> getAllCars(){ return carRepository.findAll(); }
 
     public Optional<Car> getCarById(Integer id){
         return carRepository.findById(id);
