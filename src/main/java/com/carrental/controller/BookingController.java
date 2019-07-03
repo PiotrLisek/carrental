@@ -60,7 +60,7 @@ public class BookingController {
         return "redirect:/booking/list";
     }
 
-    @GetMapping("/delete-booking")
+    @GetMapping("/delete")
     public String deleteBooking(@RequestParam("id") Integer id) {
         bookingService.deleteById(id);
         return "redirect:/booking/list";

@@ -18,7 +18,7 @@
     End of rent: ${rent.booking.endOfRent} <br />
     Notes: ${rent.notes} <br />
     <a href="edit/${rent.id}">Edit</a> |
-    <a href="delete-rent?id=${rent.id}">Delete</a>
+    <a href="delete?id=${rent.id}">Delete</a>
     <br /><br /><br />
 </c:forEach>
 </body>

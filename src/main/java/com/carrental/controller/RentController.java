@@ -60,7 +60,7 @@ public class RentController {
         return "redirect:/rent/list";
     }
 
-    @GetMapping("/delete-rent")
+    @GetMapping("/delete")
     public String deleteRent(@RequestParam("id") Integer id) {
         rentService.deleteById(id);
         return "redirect:/rent/list";
