@@ -17,6 +17,7 @@
         <td><a href="/booking/create">Add booking</a></td>
         <td><a href="/rent/create">Add rent</a></td>
         <td><a href="/employee/create">Add employee</a></td>
+        <td><a href="/giveback/create">Add giveback</a></td>
     </tr>
     <tr>
         <td><a href="/car/list">Cars</a></td>
@@ -25,8 +26,10 @@
         <td><a href="/booking/list">Bookings</a></td>
         <td><a href="/rent/list">Rents</a></td>
         <td><a href="/employee/list">Employees</a></td>
+        <td><a href="/giveback/list">Givebacks</a></td>
     </tr>
 </table><br />
+
 <a href="/car/create">Add car</a> |
 <a href="/car/list">Cars</a> |
 <a href="/department/create">Add department</a> |
@@ -38,7 +41,9 @@
 <a href="/rent/create">Add rent</a> |
 <a href="/rent/list">Rents</a> |
 <a href="/employee/create">Add employee</a> |
-<a href="/employee/list">Employees</a><br/><br/>
+<a href="/employee/list">Employees</a> |
+<a href="/giveback/create">Add giveback</a> |
+<a href="/giveback/list">Givebacks</a><br/><br/>
 <br />
 
 </body>

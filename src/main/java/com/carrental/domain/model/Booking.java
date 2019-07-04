@@ -23,6 +23,10 @@ public class Booking {
     @OneToOne(cascade = CascadeType.ALL)
     private Rent rent;
 
+    @OneToOne(mappedBy = "booking")
+    private Giveback giveback;
+
+
 //    TODO: make relationships
 //    private Car car;
 //    private Department department;
