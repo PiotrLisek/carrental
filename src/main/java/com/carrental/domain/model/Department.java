@@ -25,5 +25,8 @@ public class Department {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "department")
     private List<Car> cars;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
+    private List<Employee> employees;
+
 
 }
