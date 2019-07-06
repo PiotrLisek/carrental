@@ -78,7 +78,9 @@ public class CarController {
     @GetMapping("/edit/{id}")
     public String editRentForm(@PathVariable("id") Integer id, Model model) {
         Optional<Car> maybeCar = carService.getCarById(id);
+        List<Department> departments = departmentService.getAllDepartments();
 
+        model.addAttribute("departments",departments);
         if (maybeCar.isPresent()) {
             model.addAttribute("car", maybeCar.get());
             return "car/edit-form";

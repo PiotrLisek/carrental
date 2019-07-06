@@ -61,8 +61,8 @@ SELECT:
                     Mileage: ${car.mileage} <br/>
                     Status: ${car.status} <br/>
                     Price per day: ${car.pricePerDay} <br/><br/>
-                    <a href="edit/${car.id}">Edit</a> |
-                    <a href="delete?id=${car.id}">Delete</a>
+                    <a href="../car/edit/${car.id}">Edit</a> |
+                    <a href="../car/delete?id=${car.id}">Delete</a>
                     <br/><br/><br/>
                 </td>
             </c:forEach>
