@@ -18,12 +18,12 @@
     Mileage: <form:input path="mileage"/> <br />
     Status: <form:input path="status"/> <br />
     Price per day: <form:input path="pricePerDay"/> <br />
-    Department:
-    <select name="department">
-        <c:forEach items="${departments}" var="department">
-            <option value="${department.id}">${department.name}</option>
-        </c:forEach><br />
-    </select>
+    <%--Department:--%>
+    <%--<select name="department">--%>
+        <%--<c:forEach items="${departments}" var="department">--%>
+            <%--<option value="${department.id}">${department.name}</option>--%>
+        <%--</c:forEach><br />--%>
+    <%--</select>--%>
     <input type="submit" value="Create"/>
 </form:form>
 

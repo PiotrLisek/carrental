@@ -49,9 +49,9 @@ public class CarController {
 
     @GetMapping("/create/{departmentId}")
     public String createCarFormWithId(Model model, @PathVariable("departmentId") Integer departmentId) {
-        List<Department> departments = departmentService.getAllDepartments();
-
-        model.addAttribute("departments",departments);
+//        List<Department> departments = departmentService.getAllDepartments();
+//
+//        model.addAttribute("departments",departments);
         model.addAttribute("departmentId", departmentId);
         model.addAttribute("car", new Car());
         return "car/form-with-id";

@@ -14,6 +14,6 @@ public class Rent {
 
     private String notes;
 
-    @OneToOne(mappedBy = "rent")
+    @OneToOne(cascade = CascadeType.ALL)
     private Booking booking;
 }

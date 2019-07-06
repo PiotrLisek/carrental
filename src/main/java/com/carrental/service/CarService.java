@@ -32,14 +32,15 @@ public class CarService {
 
     public List<Car> getAllCars(){ return carRepository.findAll(); }
 
-    public List<Car> getAllCarsByDepartment(Integer departmentId) {
-        List<Car> cars = getAllCars();
-        List<Car> carslist = cars.stream()
-                .filter(car -> car.getDepartment().getId().equals(departmentId))
-                .collect(Collectors.toList());
-
-        return carslist;
-    }
+//    public Optional<Car> getAllCarsByDepartment(Car car, Integer departmentId) {
+//
+//        Optional<Department> department = departmentService.getDepartmentById(departmentId);
+//
+//        if (department.isPresent()) {
+//			car.setDepartment(department.get());
+//		}
+//        return carRepository.findAllById();
+//    }
 
     public Optional<Car> getCarById(Integer id){
         return carRepository.findById(id);
