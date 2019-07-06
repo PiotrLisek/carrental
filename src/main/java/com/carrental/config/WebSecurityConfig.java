@@ -35,7 +35,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/anonymous*").anonymous()
                 .antMatchers("/login").permitAll()
-                .anyRequest().authenticated().and().formLogin().loginPage("/login");
+                .anyRequest().authenticated()
+            .and().formLogin().loginPage("/login")
+                    .defaultSuccessUrl("/car/list");
 
 //                .loginProcessingUrl("/perform_login")
 //                .defaultSuccessUrl("/homepage.html", true)
