@@ -10,7 +10,11 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Cars list</h2>
-
+<c:url var="logoutUrl" value="/logout"/>
+<form action="${logoutUrl}" method="post">
+    <input type="submit" value="Logout"/>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
 <c:forEach items="${cars}" var="car">
     Company: ${car.company}<br />
     Model: ${car.model} <br />

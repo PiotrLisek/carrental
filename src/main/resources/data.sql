@@ -9,7 +9,7 @@ INSERT INTO giveback VALUES('2','500','19.01.2019','Broken mirror','2');
 
 INSERT INTO department VALUES('1','al. Grunwaldzka 51','Gdansk','Example Rental #1');
 INSERT INTO department VALUES('2','ul. Kartuska 111','Gdansk','Example Rental #2');
-INSERT INTO car VALUES('1','Hatchback','Silver','Volkswagen','11500','Golf','120','Available','2017','1');
-INSERT INTO car VALUES('2','Hatchback','Silver','Volkswagen','9500','Golf','120','Unavailable','2018','1');
+INSERT INTO car VALUES('1','Hatchback','Silver','Volkswagen','11500','Golf','120','Available','2017','2');
+INSERT INTO car VALUES('2','Hatchback','Silver','Volkswagen','9500','Golf','120','Unavailable','2018','2');
 INSERT INTO employee VALUES('1','Eric','Smith','Manager','1');
 INSERT INTO employee VALUES('2','Jack','Stone','Assistant','1');

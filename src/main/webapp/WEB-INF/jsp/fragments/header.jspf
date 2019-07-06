@@ -10,9 +10,7 @@
 
 <h1>CAR RENTAL</h1>
 
-<a href="/user">User</a> |
-<a href="/assistant">Assistant</a> |
-<a href="/manager">Manager</a><br/><br/>
+<a href="/logout">logout</a> |
 
 <table style="width:100%">
     <tr>

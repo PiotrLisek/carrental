@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -30,6 +32,15 @@ public class CarService {
 
     public List<Car> getAllCars(){ return carRepository.findAll(); }
 
+    public List<Car> getAllCarsByDepartment(Integer departmentId) {
+        List<Car> cars = getAllCars();
+        List<Car> carslist = cars.stream()
+                .filter(car -> car.getDepartment().getId().equals(departmentId))
+                .collect(Collectors.toList());
+
+        return carslist;
+    }
+
     public Optional<Car> getCarById(Integer id){
         return carRepository.findById(id);
     }
@@ -41,4 +52,6 @@ public class CarService {
     public void deleteById (Integer id){
         carRepository.deleteById(id);
     }
+
+
 }

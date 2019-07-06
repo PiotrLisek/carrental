@@ -1,6 +1,8 @@
 package com.carrental.controller;
 
 import com.carrental.domain.model.Department;
+import com.carrental.domain.model.car.Car;
+import com.carrental.service.CarService;
 import com.carrental.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,7 @@ import java.util.Optional;
 public class DepartmentController {
 
     private final DepartmentService departmentService;
+    private final CarService carService;
 
     @GetMapping("/create")
     public String createDepartmentForm(Model model) {
@@ -28,7 +31,7 @@ public class DepartmentController {
     @PostMapping("/create")
     public String createDepartment(@ModelAttribute("department") Department department) {
         departmentService.createDepartment(department);
-        log.info("Created new department {}", department);
+//        log.info("Created new department {}", department);
 
         return "redirect:/department/list";
     }
@@ -36,9 +39,20 @@ public class DepartmentController {
     @GetMapping("/list")
     public String departmentList(Model model) {
         List<Department> departments = departmentService.getAllDepartments();
+        List<Car> cars = carService.getAllCars();
+
 
         model.addAttribute("departments", departments);
+        model.addAttribute("cars", cars);
         return "department/list";
+    }
+
+    @PostMapping("/list")
+    public String departmentList(@ModelAttribute("department") Department department, Integer departmentId, Model model) {
+        List<Car> cars = carService.getAllCarsByDepartment(departmentId);
+        model.addAttribute("cars", cars);
+//        log.info("Created new department {}", department);
+        return "redirect:/department/list";
     }
 
     @GetMapping("/edit/{id}")

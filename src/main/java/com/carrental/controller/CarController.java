@@ -99,4 +99,9 @@ public class CarController {
         carService.deleteById(id);
         return "redirect:/car/list";
     }
+
+    @PostMapping("/logout")
+    public String logout() {
+        return "logout";
+    }
 }
