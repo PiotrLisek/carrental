@@ -1,0 +1,1 @@
+<security:form-login login-page="/login" authentication-failure-url="/login?error=true" />

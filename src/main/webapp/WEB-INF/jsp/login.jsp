@@ -4,10 +4,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create car</title>
+    <title>Login form</title>
 </head>
 <body>
-<h2>Create car form</h2>
+<h2>Login form</h2>
 <form action="/login" method="POST">
     <input name="username" type="text">
     <input name="password" type="password">

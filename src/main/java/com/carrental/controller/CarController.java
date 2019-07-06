@@ -8,8 +8,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +34,13 @@ public class CarController {
     }
 
     @PostMapping("/create")
-    public String createCar(@ModelAttribute("car") Car car) {
+    public String createCar(@Valid @ModelAttribute("car") Car car, BindingResult result, Model model) {
+        if(result.hasErrors()){
+            List<Department> departments = departmentService.getAllDepartments();
+            model.addAttribute("departments",departments);
+
+            return "car/form";
+        }
         carService.createCar(car);
         log.info("Created new car {}", car);
 

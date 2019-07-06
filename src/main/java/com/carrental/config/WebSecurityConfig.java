@@ -36,12 +36,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/anonymous*").anonymous()
                 .antMatchers("/login").permitAll()
                 .anyRequest().authenticated()
-            .and().formLogin().loginPage("/login")
-                    .defaultSuccessUrl("/car/list");
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/car/list");
 
-//                .loginProcessingUrl("/perform_login")
-//                .defaultSuccessUrl("/homepage.html", true)
-////                .failureUrl("/login.html?error=true")
 //                .failureHandler(authenticationFailureHandler())
 //                .and()
 //                .logout()
