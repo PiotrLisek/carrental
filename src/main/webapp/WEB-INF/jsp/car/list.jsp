@@ -10,7 +10,6 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Cars list</h2>
-
 <c:forEach items="${cars}" var="car">
     Company: ${car.company}<br />
     Model: ${car.model} <br />

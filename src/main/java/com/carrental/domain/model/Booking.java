@@ -20,7 +20,7 @@ public class Booking {
     @ManyToOne
     private Customer customer;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "booking")
     private Rent rent;
 
     @OneToOne(mappedBy = "booking")

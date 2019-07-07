@@ -17,7 +17,13 @@
     Mileage: <form:input path="mileage"/> <br />
     Status: <form:input path="status"/> <br />
     Price per day: <form:input path="pricePerDay"/> <br />
-    Department: ${car.department.name} - ${car.department.address} ${car.department.city} <br />
+    Current department: ${car.department.name} - ${car.department.address} ${car.department.city} <br />
+    New department:
+    <select name="department">
+        <c:forEach items="${departments}" var="department">
+            <option value="${department.id}">${department.name}</option>
+        </c:forEach><br />
+    </select><br />
     <form:hidden path="id" />
     <input type="submit" value="Save"/>
 </form:form>
