@@ -19,8 +19,8 @@ public class Booking {
     private String endOfRent;
     private Integer price;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "booking")
-    private List<Car> cars;
+    @ManyToOne
+    private Car car;
 
     @ManyToOne
     private Customer customer;

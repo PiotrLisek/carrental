@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Data
@@ -32,6 +33,6 @@ public class Car {
     @ManyToOne
     private Department department;
 
-    @ManyToOne
-    private Booking booking;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "car")
+    private List<Booking> bookings;
 }
