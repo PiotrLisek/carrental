@@ -4,6 +4,7 @@ import com.carrental.domain.model.car.Car;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,6 +19,9 @@ public class Booking {
     private String endOfRent;
     private Integer price;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "booking")
+    private List<Car> cars;
+
     @ManyToOne
     private Customer customer;
 
@@ -27,8 +31,6 @@ public class Booking {
     @OneToOne(mappedBy = "booking")
     private Giveback giveback;
 
-    @OneToOne(mappedBy = "booking")
-    private Car car;
 
 //    private Department department;
 }

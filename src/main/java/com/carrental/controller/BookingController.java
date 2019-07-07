@@ -1,7 +1,10 @@
 package com.carrental.controller;
 
 import com.carrental.domain.model.Booking;
+import com.carrental.domain.model.Department;
+import com.carrental.domain.model.car.Car;
 import com.carrental.service.BookingService;
+import com.carrental.service.CarService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -18,9 +21,13 @@ import java.util.Optional;
 public class BookingController {
 
     private final BookingService bookingService;
+    private final CarService carService;
 
     @GetMapping("/create")
     public String createBookingForm(Model model) {
+        List<Car> cars = carService.getAllCars();
+
+        model.addAttribute("cars",cars);
         model.addAttribute("booking", new Booking());
         return "booking/form";
     }

@@ -32,6 +32,6 @@ public class Car {
     @ManyToOne
     private Department department;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Booking booking;
 }

@@ -13,6 +13,7 @@
 
 <c:forEach items="${bookings}" var="booking">
     Customer: ${booking.customer.firstName} ${booking.customer.lastName}<br />
+    <%--Car: ${booking.car.company} ${booking.car.model}<br />--%>
     Date of booking: ${booking.dateOfBooking}<br />
     Beginning of rent: ${booking.beginningOfRent} <br />
     End of rent: ${booking.endOfRent} <br />

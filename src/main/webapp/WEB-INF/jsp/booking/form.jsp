@@ -10,6 +10,11 @@
 <%@include file="../fragments/header.jspf" %>
 <h2>Create booking form</h2>
 <form:form action="/booking/create" method="POST" modelAttribute="booking">
+    Cars: <select name="car">
+        <c:forEach items="${cars}" var="car">
+            <option value="${car.id}">${car.company} ${car.model}</option>
+        </c:forEach>
+    </select><br />
     Date of booking: <form:input path="dateOfBooking"/> <br />
     Beginning of rent: <form:input path="beginningOfRent"/> <br />
     End of rent: <form:input path="endOfRent"/> <br />
