@@ -1,5 +1,6 @@
 package com.carrental.domain.model;
 
+import com.carrental.domain.model.car.Car;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -26,8 +27,8 @@ public class Booking {
     @OneToOne(mappedBy = "booking")
     private Giveback giveback;
 
+    @OneToOne(mappedBy = "booking")
+    private Car car;
 
-//    TODO: make relationships
-//    private Car car;
 //    private Department department;
 }

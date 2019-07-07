@@ -1,5 +1,6 @@
 package com.carrental.domain.model.car;
 
+import com.carrental.domain.model.Booking;
 import com.carrental.domain.model.Department;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,4 +31,7 @@ public class Car {
 
     @ManyToOne
     private Department department;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Booking booking;
 }
