@@ -31,7 +31,7 @@ public class DepartmentController {
     @PostMapping("/create")
     public String createDepartment(@ModelAttribute("department") Department department) {
         departmentService.createDepartment(department);
-//        log.info("Created new department {}", department);
+        log.info("Created new department {}", department);
 
         return "redirect:/department/list";
     }
@@ -48,11 +48,12 @@ public class DepartmentController {
     }
 
     @PostMapping("/list")
-    public String departmentList(@ModelAttribute("department") Department department, Integer departmentId, Model model) {
-//        List<Car> cars = carService.getAllCarsByDepartment(departmentId);
-//        model.addAttribute("cars", cars);
-        log.info("Created new department {}", department);
-        return "redirect:/department/list";
+    public String departmentList(@ModelAttribute("department") Department department, Model model) {
+        final List<Car> allCarsById = carService.getAllCarsById(department);
+        model.addAttribute("cars",allCarsById );
+
+        log.info("Show cars by ID {}", department);
+        return "car/list";
     }
 
     @PostMapping("/create/{departmentId}")

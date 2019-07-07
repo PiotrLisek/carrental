@@ -34,13 +34,14 @@ SELECT:
     <a href="delete?id=${car.id}">Delete</a>
     <br/><br/><br/>
 </c:forEach>
-<br/><br/>
+<br/><br/><br/>
 
-
-///////////////////////////////////////////////////////////<br/>
-
+<table>
+    <tr>
+        <th>Deparment</th>
+        <th>Cars</th>
+    </tr>
 <c:forEach items="${departments}" var="department">
-    <table>
         <tr>
             <td>
                 Name: ${department.name}<br/>
@@ -67,8 +68,7 @@ SELECT:
                 </td>
             </c:forEach>
         </tr>
-    </table>
 </c:forEach>
-
+</table>
 </body>
 </html>

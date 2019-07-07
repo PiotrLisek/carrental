@@ -7,6 +7,8 @@ import com.carrental.domain.repository.DepartmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,15 +34,11 @@ public class CarService {
 
     public List<Car> getAllCars(){ return carRepository.findAll(); }
 
-//    public Optional<Car> getAllCarsByDepartment(Car car, Integer departmentId) {
-//
-//        Optional<Department> department = departmentService.getDepartmentById(departmentId);
-//
-//        if (department.isPresent()) {
-//			car.setDepartment(department.get());
-//		}
-//        return carRepository.findAllById();
-//    }
+    public List<Car> getAllCarsById(Department department) {
+
+			return carRepository.findAllByDepartment(department);
+
+    }
 
     public Optional<Car> getCarById(Integer id){
         return carRepository.findById(id);
@@ -53,6 +51,5 @@ public class CarService {
     public void deleteById (Integer id){
         carRepository.deleteById(id);
     }
-
 
 }

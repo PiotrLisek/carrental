@@ -9,7 +9,7 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Create car form</h2>
-<form:form action="/car/create/{departmentId}" method="POST" modelAttribute="car">
+<form:form action="/car/create/${departmentId}" method="POST" modelAttribute="car">
     Company: <form:input path="company"/> <br />
     Model: <form:input path="model"/> <br />
     Category: <form:input path="category"/> <br />
@@ -18,12 +18,7 @@
     Mileage: <form:input path="mileage"/> <br />
     Status: <form:input path="status"/> <br />
     Price per day: <form:input path="pricePerDay"/> <br />
-    <%--Department:--%>
-    <%--<select name="department">--%>
-        <%--<c:forEach items="${departments}" var="department">--%>
-            <%--<option value="${department.id}">${department.name}</option>--%>
-        <%--</c:forEach><br />--%>
-    <%--</select>--%>
+    Department: ${car.department.name} - ${car.department.address} ${car.department.city} <br />
     <input type="submit" value="Create"/>
 </form:form>
 
