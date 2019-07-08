@@ -34,31 +34,35 @@ public class BookingController {
     }
 
     @PostMapping("/create/{depId}")
-    public String createBooking(Model model, @PathVariable("depId") Integer depId) {
+    public String createBooking(@PathVariable("depId") Integer depId, Model model) {
 
 
         //log.info("Created new booking {}", booking);
         model.addAttribute("cars", bookingService.getCarsByDepartmentId(depId));
         model.addAttribute("bookingForm", new Booking());
-        return "create/{depId}/finish";
-    }
-
-    @PostMapping("/create/{depId}/finish")
-    public String createBookingById(Model model, @PathVariable Integer depId) {
-        bookingService.getCarsByDepartmentId(depId);
-        //log.info("Created new booking {}", booking);
-
-        return "redirect:/booking/list";
+        return "create/{depId}/form-with-id";
     }
 
     @GetMapping("/create/{depId}/finish")
-    public String bookingListById(Model model) {
+    public String bookingListById(@ModelAttribute("booking") Booking booking, Model model) {
+        bookingService.createBooking(booking);
         List<Booking> bookings = bookingService.getAllBookings();
         List<Department> departments = departmentService.getAllDepartments();
+        List<Car> cars = carService.getAllCars();
 
+        model.addAttribute("cars", cars);
         model.addAttribute("departments", departments);
         model.addAttribute("bookings", bookings);
-        return "booking/list";
+        return "booking/form-with-id";
+    }
+
+    @PostMapping("/create/{depId}/finish")
+    public String createBookingById(Model model, @PathVariable("depId") Integer depId, @ModelAttribute("booking") Booking booking) {
+        bookingService.getCarsByDepartmentId(depId);
+        bookingService.createBooking(booking, depId);
+        //log.info("Created new booking {}", booking);
+        model.addAttribute("cars", bookingService.getCarsByDepartmentId(depId));
+        return "redirect:/booking/list";
     }
 
     @GetMapping("/list")

@@ -19,9 +19,16 @@ public class BookingService {
     private final BookingRepository bookingRepository;
     private final DepartmentRepository departmentRepository;
     private final CarRepository carRepository;
+    private final DepartmentService departmentService;
+    private final CarService carService;
 
     public void createBooking (Booking booking) {
         bookingRepository.save(booking);
+    }
+
+    public void createBooking(Booking booking, Integer depId){
+
+        // TODO
     }
 
     public List<Booking> getAllBookings() { return bookingRepository.findAll(); }
