@@ -37,7 +37,6 @@ public class CarService {
     public List<Car> getAllCarsById(Department department) {
 
 			return carRepository.findAllByDepartment(department);
-
     }
 
     public Optional<Car> getCarById(Integer id){

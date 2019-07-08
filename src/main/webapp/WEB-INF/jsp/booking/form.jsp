@@ -10,16 +10,26 @@
 <%@include file="../fragments/header.jspf" %>
 <h2>Create booking form</h2>
 <form:form action="/booking/create" method="POST" modelAttribute="booking">
-    Cars: <select name="car">
-        <c:forEach items="${cars}" var="car">
-            <option value="${car.id}">${car.company} ${car.model}</option>
-        </c:forEach>
-    </select><br />
-    Date of booking: <form:input path="dateOfBooking"/> <br />
-    Beginning of rent: <form:input path="beginningOfRent"/> <br />
-    End of rent: <form:input path="endOfRent"/> <br />
-    Price: <form:input path="price"/> <br />
-    <input type="submit" value="Create"/>
+    <select name="department">
+        <c:forEach items="${departments}" var="department">
+            <option value="${department.id}">${department.name} - ${department.address} ${department.city}</option>
+        </c:forEach><br/>
+    </select>
+    <input type="submit" value="Submit"/><br/>
 </form:form>
+
+<br/><br/><br/>
+<%--Cars: <select name="car">--%>
+<%--<c:forEach items="${cars}" var="car">--%>
+<%--<option value="${car.id}">${car.company} ${car.model}</option>--%>
+<%--</c:forEach>--%>
+<%--</select><br />--%>
+<%--<form:form action="/booking/create" method="POST" modelAttribute="booking">--%>
+    <%--Date of booking: <form:input path="dateOfBooking"/> <br/>--%>
+    <%--Beginning of rent: <form:input path="beginningOfRent"/> <br/>--%>
+    <%--End of rent: <form:input path="endOfRent"/> <br/>--%>
+    <%--Price: <form:input path="price"/> <br/>--%>
+    <%--<input type="submit" value="Create"/>--%>
+<%--</form:form>--%>
 </body>
 </html>

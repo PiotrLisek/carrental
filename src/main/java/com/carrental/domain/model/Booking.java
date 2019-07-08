@@ -32,5 +32,4 @@ public class Booking {
     private Giveback giveback;
 
 
-//    private Department department;
 }

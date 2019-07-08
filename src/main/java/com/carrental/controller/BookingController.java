@@ -5,6 +5,7 @@ import com.carrental.domain.model.Department;
 import com.carrental.domain.model.car.Car;
 import com.carrental.service.BookingService;
 import com.carrental.service.CarService;
+import com.carrental.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -22,28 +23,50 @@ public class BookingController {
 
     private final BookingService bookingService;
     private final CarService carService;
+    private final DepartmentService departmentService;
 
     @GetMapping("/create")
     public String createBookingForm(Model model) {
-        List<Car> cars = carService.getAllCars();
+        List<Department> departments = departmentService.getAllDepartments();
 
-        model.addAttribute("cars",cars);
-        model.addAttribute("booking", new Booking());
+        model.addAttribute("departments", departments);
         return "booking/form";
     }
 
-    @PostMapping("/create")
-    public String createBooking(@ModelAttribute("booking") Booking booking) {
-        bookingService.createBooking(booking);
-        log.info("Created new booking {}", booking);
+    @PostMapping("/create/{depId}")
+    public String createBooking(Model model, @PathVariable("depId") Integer depId) {
+
+
+        //log.info("Created new booking {}", booking);
+        model.addAttribute("cars", bookingService.getCarsByDepartmentId(depId));
+        model.addAttribute("bookingForm", new Booking());
+        return "create/{depId}/finish";
+    }
+
+    @PostMapping("/create/{depId}/finish")
+    public String createBookingById(Model model, @PathVariable Integer depId) {
+        bookingService.getCarsByDepartmentId(depId);
+        //log.info("Created new booking {}", booking);
 
         return "redirect:/booking/list";
+    }
+
+    @GetMapping("/create/{depId}/finish")
+    public String bookingListById(Model model) {
+        List<Booking> bookings = bookingService.getAllBookings();
+        List<Department> departments = departmentService.getAllDepartments();
+
+        model.addAttribute("departments", departments);
+        model.addAttribute("bookings", bookings);
+        return "booking/list";
     }
 
     @GetMapping("/list")
     public String bookingList(Model model) {
         List<Booking> bookings = bookingService.getAllBookings();
+        List<Department> departments = departmentService.getAllDepartments();
 
+        model.addAttribute("departments", departments);
         model.addAttribute("bookings", bookings);
         return "booking/list";
     }

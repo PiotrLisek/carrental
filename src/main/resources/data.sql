@@ -11,7 +11,5 @@ INSERT INTO rent VALUES('2','Broken mirror','2');
 INSERT INTO giveback VALUES('1','1500','19.01.2019','Empty gas tank','1');
 INSERT INTO giveback VALUES('2','500','19.01.2019','Broken mirror','2');
 
-
-
 INSERT INTO employee VALUES('1','Eric','Smith','Manager','1');
 INSERT INTO employee VALUES('2','Jack','Stone','Assistant','1');
