@@ -9,7 +9,7 @@
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
-<h2>Bookings list</h2>
+<h2>Your booking</h2>
 
 <c:forEach items="${bookings}" var="booking">
     Customer: ${booking.customer.firstName} ${booking.customer.lastName}<br />
@@ -18,9 +18,7 @@
     Date of booking: ${booking.dateOfBooking}<br />
     Beginning of rent: ${booking.beginningOfRent} <br />
     End of rent: ${booking.endOfRent} <br />
-    Price: ${booking.price} <br /><br />
-    <a href="edit/${booking.id}">Edit</a> |
-    <a href="delete?id=${booking.id}">Delete</a>
+    Price: ${booking.price} <br />
     <br /><br /><br />
 </c:forEach>
 </body>

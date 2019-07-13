@@ -48,7 +48,7 @@ public class CarController {
     }
 
     @GetMapping("/create/{departmentId}")
-    public String createCarFormWithId(Model model, @PathVariable("departmentId") Integer departmentId) {
+    public String createCarFormWithId(@PathVariable("departmentId") Integer departmentId, Model model) {
 
         model.addAttribute("departmentId", departmentId);
         model.addAttribute("car", new Car());
@@ -56,7 +56,7 @@ public class CarController {
     }
 
     @PostMapping("/create/{departmentId}")
-    public String createCarWithId(@ModelAttribute("car") Car car, @PathVariable("departmentId") Integer departmentId) {
+    public String createCarFormWithId(@ModelAttribute("car") Car car, @PathVariable("departmentId") Integer departmentId) {
         carService.createCar(car, departmentId);
         log.info("Created new car {}", car);
 

@@ -1,7 +1,11 @@
 package com.carrental.controller;
 
 import com.carrental.domain.model.Booking;
+import com.carrental.domain.model.Department;
+import com.carrental.domain.model.car.Car;
 import com.carrental.service.BookingService;
+import com.carrental.service.CarService;
+import com.carrental.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -18,25 +22,54 @@ import java.util.Optional;
 public class BookingController {
 
     private final BookingService bookingService;
+    private final CarService carService;
+    private final DepartmentService departmentService;
 
     @GetMapping("/create")
     public String createBookingForm(Model model) {
+        List<Department> departments = departmentService.getAllDepartments();
+
         model.addAttribute("booking", new Booking());
+        model.addAttribute("departments", departments);
         return "booking/form";
     }
 
-    @PostMapping("/create")
-    public String createBooking(@ModelAttribute("booking") Booking booking) {
-        bookingService.createBooking(booking);
-        log.info("Created new booking {}", booking);
+    @GetMapping("/create-car")
+    public String createBooking(@RequestParam("department") Integer depId, @RequestParam("beginningOfRent") String start, @RequestParam("endOfRent") String end, Model model) {
 
-        return "redirect:/booking/list";
+
+        //log.info("Created new booking {}", booking);
+        BookingForm bookingForm = new BookingForm();
+
+        bookingForm.setBeginningOfRent(start);
+        bookingForm.setEndOfRent(end);
+        model.addAttribute("booking", bookingForm);
+        model.addAttribute("cars", bookingService.getCarsByDepartmentId(depId));
+        return "booking/form-with-id";
     }
+
+    @PostMapping("/create/finish")
+    public String bookingListById( @ModelAttribute("booking") BookingForm booking, Model model) {
+        int id = bookingService.createBooking(booking);
+
+        return "redirect:/booking/details/" + id;
+    }
+
+    @GetMapping("/details/{id}")
+    public String details(@PathVariable("id") Integer id, Model model){
+        Booking booking = bookingService.getBookingById(id).get();
+        model.addAttribute("booking", booking);
+
+        return "booking/details";
+    }
+
 
     @GetMapping("/list")
     public String bookingList(Model model) {
         List<Booking> bookings = bookingService.getAllBookings();
+        List<Department> departments = departmentService.getAllDepartments();
 
+        model.addAttribute("departments", departments);
         model.addAttribute("bookings", bookings);
         return "booking/list";
     }

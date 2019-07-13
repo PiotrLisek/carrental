@@ -1,8 +1,10 @@
 package com.carrental.domain.model;
 
+import com.carrental.domain.model.car.Car;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,6 +20,9 @@ public class Booking {
     private Integer price;
 
     @ManyToOne
+    private Car car;
+
+    @ManyToOne
     private Customer customer;
 
     @OneToOne(mappedBy = "booking")
@@ -27,7 +32,4 @@ public class Booking {
     private Giveback giveback;
 
 
-//    TODO: make relationships
-//    private Car car;
-//    private Department department;
 }

@@ -49,19 +49,13 @@ public class DepartmentController {
 
     @PostMapping("/list")
     public String departmentList(@ModelAttribute("department") Department department, Model model) {
+        List<Department> departments = departmentService.getAllDepartments();
         final List<Car> allCarsById = carService.getAllCarsById(department);
+
+        model.addAttribute("departments", departments);
         model.addAttribute("cars",allCarsById );
-
         log.info("Show cars by ID {}", department);
-        return "car/list";
-    }
-
-    @PostMapping("/create/{departmentId}")
-    public String createCarWithId(@ModelAttribute("car") Car car, @PathVariable("departmentId") Integer departmentId) {
-        carService.createCar(car, departmentId);
-        log.info("Created new car {}", car);
-
-        return "redirect:/car/list";
+        return "department/list";
     }
 
     @GetMapping("/edit/{id}")

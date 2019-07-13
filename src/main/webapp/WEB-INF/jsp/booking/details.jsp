@@ -11,7 +11,6 @@
 <%@include file="../fragments/header.jspf" %>
 <h2>Bookings list</h2>
 
-<c:forEach items="${bookings}" var="booking">
     Customer: ${booking.customer.firstName} ${booking.customer.lastName}<br />
     Car: ${booking.car.company} ${booking.car.model}<br />
     Department: ${booking.car.department.name} - ${booking.car.department.address} ${booking.car.department.city}<br />
@@ -22,6 +21,6 @@
     <a href="edit/${booking.id}">Edit</a> |
     <a href="delete?id=${booking.id}">Delete</a>
     <br /><br /><br />
-</c:forEach>
+
 </body>
 </html>
