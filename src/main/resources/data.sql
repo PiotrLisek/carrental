@@ -4,6 +4,7 @@ INSERT INTO department VALUES('1','al. Grunwaldzka 51','Gdansk','Example Rental 
 INSERT INTO department VALUES('2','ul. Kartuska 111','Gdansk','Example Rental #2');
 INSERT INTO car VALUES('1','Hatchback','Black','Audi','1900','A3','180','Available','2019','1');
 INSERT INTO car VALUES('2','Hatchback','Silver','Volkswagen','11500','Golf','120','Available','2017','2');
+INSERT INTO car VALUES('3','Hatchback','Black','Volkswagen','1100','Golf','120','Available','2017','2');
 INSERT INTO booking VALUES('1','01.01.2019','24.12.2018','08.01.2019','500','1','1');
 INSERT INTO booking VALUES('2','08.01.2019','24.12.2018','25.01.2019','500','1','2');
 INSERT INTO rent VALUES('1','Empty gas tank','1');

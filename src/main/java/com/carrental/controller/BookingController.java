@@ -33,19 +33,20 @@ public class BookingController {
         return "booking/form";
     }
 
-    @PostMapping("/create/{depId}")
-    public String createBooking(@PathVariable("depId") Integer depId, Model model) {
+    @GetMapping("/create-car")
+    public String createBooking(@RequestParam("department") Integer depId, Model model) {
 
 
         //log.info("Created new booking {}", booking);
         model.addAttribute("cars", bookingService.getCarsByDepartmentId(depId));
-        model.addAttribute("bookingForm", new Booking());
-        return "create/{depId}/form-with-id";
+        model.addAttribute("bookingForm", new BookingForm());
+        return "booking/form-with-id";
     }
 
-    @GetMapping("/create/{depId}/finish")
-    public String bookingListById(@ModelAttribute("booking") Booking booking, Model model) {
-        bookingService.createBooking(booking);
+    @PostMapping("/create/finish")
+    public String bookingListById(@ModelAttribute("bookingForm") BookingForm bookingForm, Model model) {
+//        bookingService.createBooking(booking);
+        System.out.println(bookingForm);
         List<Booking> bookings = bookingService.getAllBookings();
         List<Department> departments = departmentService.getAllDepartments();
         List<Car> cars = carService.getAllCars();
@@ -54,15 +55,6 @@ public class BookingController {
         model.addAttribute("departments", departments);
         model.addAttribute("bookings", bookings);
         return "booking/form-with-id";
-    }
-
-    @PostMapping("/create/{depId}/finish")
-    public String createBookingById(Model model, @PathVariable("depId") Integer depId, @ModelAttribute("booking") Booking booking) {
-        bookingService.getCarsByDepartmentId(depId);
-        bookingService.createBooking(booking, depId);
-        //log.info("Created new booking {}", booking);
-        model.addAttribute("cars", bookingService.getCarsByDepartmentId(depId));
-        return "redirect:/booking/list";
     }
 
     @GetMapping("/list")

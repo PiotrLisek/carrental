@@ -9,17 +9,28 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Create booking form</h2>
-<form:form action="/booking/create/${booking.car.department.id}/finish" method="POST" modelAttribute="cars">
+<form:form action="/booking/create/finish" method="POST" modelAttribute="bookingForm">
     Radio buttons
-    <%--Company: <form:input path="id"/> <br />--%>
-    <%--Model: <form:input path="model"/> <br />--%>
-    <%--Category: <form:input path="category"/> <br />--%>
-    <%--Year: <form:input path="year"/> <br />--%>
-    <%--Color: <form:input path="color"/> <br />--%>
-    <%--Mileage: <form:input path="mileage"/> <br />--%>
-    <%--Status: <form:input path="status"/> <br />--%>
-    <%--Price per day: <form:input path="pricePerDay"/> <br />--%>
+  <form:input path="beginningOfRent"/>
+  <form:input path="endOfRent"/>
+
+    <c:forEach items="${cars}" var="car">
+        Company: ${car.company}<br/>
+        Model: ${car.model} <br/>
+        Category: ${car.category} <br/>
+        Year: ${car.year} <br/>
+        Color: ${car.color}<br/>
+        Mileage: ${car.mileage} <br/>
+        Status: ${car.status} <br/>
+        Price per day: ${car.pricePerDay} <br/><br/>
+        <form:radiobutton path="carId" value="${car.id}"/>
+        <br/><br/><br/>
+    </c:forEach>
+
     <input type="submit" value="Create"/>
 </form:form>
+
+
+<br/><br/><br/>
 </body>
 </html>

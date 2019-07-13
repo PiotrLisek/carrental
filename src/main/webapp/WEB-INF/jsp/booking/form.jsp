@@ -9,7 +9,7 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Create booking form</h2>
-<form:form action="/booking/create/${booking.car.department.id}" method="POST" modelAttribute="booking">
+<form:form action="/booking/create-car" method="GET" modelAttribute="booking">
     <select name="department">
         <c:forEach items="${departments}" var="department">
             <option value="${department.id}">${department.name} - ${department.address} ${department.city}</option>
