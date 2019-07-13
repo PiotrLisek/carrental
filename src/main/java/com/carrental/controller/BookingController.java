@@ -40,6 +40,7 @@ public class BookingController {
 
         //log.info("Created new booking {}", booking);
         BookingForm bookingForm = new BookingForm();
+
         bookingForm.setBeginningOfRent(start);
         bookingForm.setEndOfRent(end);
         model.addAttribute("booking", bookingForm);
@@ -48,18 +49,20 @@ public class BookingController {
     }
 
     @PostMapping("/create/finish")
-    public String bookingListById(@ModelAttribute("booking") BookingForm booking, Model model) {
-//        bookingService.createBooking(booking);
-        System.out.println(booking);
-        List<Booking> bookings = bookingService.getAllBookings();
-        List<Department> departments = departmentService.getAllDepartments();
-        List<Car> cars = carService.getAllCars();
+    public String bookingListById( @ModelAttribute("booking") BookingForm booking, Model model) {
+        int id = bookingService.createBooking(booking);
 
-        model.addAttribute("cars", cars);
-        model.addAttribute("departments", departments);
-        model.addAttribute("bookings", bookings);
-        return "booking/form-with-id";
+        return "redirect:/booking/details/" + id;
     }
+
+    @GetMapping("/details/{id}")
+    public String details(@PathVariable("id") Integer id, Model model){
+        Booking booking = bookingService.getBookingById(id).get();
+        model.addAttribute("booking", booking);
+
+        return "booking/details";
+    }
+
 
     @GetMapping("/list")
     public String bookingList(Model model) {

@@ -9,23 +9,21 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Create booking form</h2>
-<form:form action="/booking/create/finish" method="POST" modelAttribute="booking">
-    Radio buttons
+<form:form action="/booking/create/${bookingId}/finish" method="POST" modelAttribute="booking">
   <form:hidden path="beginningOfRent"/>
   <form:hidden path="endOfRent"/>
 
     <c:forEach items="${cars}" var="car">
+        <form:radiobutton path="carId" value="${car.id}"/> - Price per day: ${car.pricePerDay}<br/>
         Company: ${car.company}<br/>
         Model: ${car.model} <br/>
         Category: ${car.category} <br/>
         Year: ${car.year} <br/>
         Color: ${car.color}<br/>
         Mileage: ${car.mileage} <br/>
-        Status: ${car.status} <br/>
-        Price per day: ${car.pricePerDay} <br/><br/>
-        <form:radiobutton path="carId" value="${car.id}"/>
-        <br/><br/><br/>
+        Status: ${car.status} <br/><br/><br/>
     </c:forEach>
+    <br/>
 
     <input type="submit" value="Create"/>
 </form:form>

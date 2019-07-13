@@ -1,5 +1,6 @@
 package com.carrental.service;
 
+import com.carrental.controller.BookingForm;
 import com.carrental.domain.model.Booking;
 import com.carrental.domain.model.Department;
 import com.carrental.domain.model.car.Car;
@@ -22,8 +23,15 @@ public class BookingService {
     private final DepartmentService departmentService;
     private final CarService carService;
 
-    public void createBooking (Booking booking) {
-        bookingRepository.save(booking);
+    public Integer createBooking (BookingForm bookingForm) {
+
+        Booking booking = new Booking();
+       booking.setBeginningOfRent(bookingForm.getBeginningOfRent());
+       booking.setEndOfRent(bookingForm.getEndOfRent());
+
+       booking.setCar(carRepository.findById(bookingForm.getCarId()).get());
+       return bookingRepository.save(booking).getId();
+
     }
 
     public void createBooking(Booking booking, Integer depId){
