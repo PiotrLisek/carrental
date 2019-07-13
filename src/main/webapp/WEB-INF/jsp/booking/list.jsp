@@ -20,7 +20,8 @@
     End of rent: ${booking.endOfRent} <br />
     Price: ${booking.price} <br /><br />
     <a href="edit/${booking.id}">Edit</a> |
-    <a href="delete?id=${booking.id}">Delete</a>
+    <a href="delete?id=${booking.id}">Delete</a> |
+    <a href="details/${booking.id}">Details</a>
     <br /><br /><br />
 </c:forEach>
 </body>
