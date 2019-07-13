@@ -29,24 +29,28 @@ public class BookingController {
     public String createBookingForm(Model model) {
         List<Department> departments = departmentService.getAllDepartments();
 
+        model.addAttribute("booking", new Booking());
         model.addAttribute("departments", departments);
         return "booking/form";
     }
 
     @GetMapping("/create-car")
-    public String createBooking(@RequestParam("department") Integer depId, Model model) {
+    public String createBooking(@RequestParam("department") Integer depId, @RequestParam("beginningOfRent") String start, @RequestParam("endOfRent") String end, Model model) {
 
 
         //log.info("Created new booking {}", booking);
+        BookingForm bookingForm = new BookingForm();
+        bookingForm.setBeginningOfRent(start);
+        bookingForm.setEndOfRent(end);
+        model.addAttribute("booking", bookingForm);
         model.addAttribute("cars", bookingService.getCarsByDepartmentId(depId));
-        model.addAttribute("bookingForm", new BookingForm());
         return "booking/form-with-id";
     }
 
     @PostMapping("/create/finish")
-    public String bookingListById(@ModelAttribute("bookingForm") BookingForm bookingForm, Model model) {
+    public String bookingListById(@ModelAttribute("booking") BookingForm booking, Model model) {
 //        bookingService.createBooking(booking);
-        System.out.println(bookingForm);
+        System.out.println(booking);
         List<Booking> bookings = bookingService.getAllBookings();
         List<Department> departments = departmentService.getAllDepartments();
         List<Car> cars = carService.getAllCars();

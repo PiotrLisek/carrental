@@ -9,10 +9,10 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Create booking form</h2>
-<form:form action="/booking/create/finish" method="POST" modelAttribute="bookingForm">
+<form:form action="/booking/create/finish" method="POST" modelAttribute="booking">
     Radio buttons
-  <form:input path="beginningOfRent"/>
-  <form:input path="endOfRent"/>
+  <form:hidden path="beginningOfRent"/>
+  <form:hidden path="endOfRent"/>
 
     <c:forEach items="${cars}" var="car">
         Company: ${car.company}<br/>
