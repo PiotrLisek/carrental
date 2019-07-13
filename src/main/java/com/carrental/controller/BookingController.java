@@ -8,10 +8,12 @@ import com.carrental.service.CarService;
 import com.carrental.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +37,9 @@ public class BookingController {
     }
 
     @GetMapping("/create-car")
-    public String createBooking(@RequestParam("department") Integer depId, @RequestParam("beginningOfRent") String start, @RequestParam("endOfRent") String end, Model model) {
+    public String createBooking(@RequestParam("department") Integer depId, @RequestParam("beginningOfRent")
+    @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate start, @RequestParam("endOfRent")
+    @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end, Model model) {
 
 
         //log.info("Created new booking {}", booking);

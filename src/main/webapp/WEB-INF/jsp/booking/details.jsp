@@ -5,12 +5,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bookings list</title>
+    <title>Details of booking</title>
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
-<h2>Bookings list</h2>
-
+<h2>Details of booking:</h2>
     Customer: ${booking.customer.firstName} ${booking.customer.lastName}<br />
     Car: ${booking.car.company} ${booking.car.model}<br />
     Department: ${booking.car.department.name} - ${booking.car.department.address} ${booking.car.department.city}<br />
@@ -21,6 +20,5 @@
     <a href="edit/${booking.id}">Edit</a> |
     <a href="delete?id=${booking.id}">Delete</a>
     <br /><br /><br />
-
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.carrental.domain.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -12,7 +13,7 @@ public class Giveback {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String givebackDate;
+    private LocalDate givebackDate;
     private String givebackNotes;
     private Integer extraCharge;
 

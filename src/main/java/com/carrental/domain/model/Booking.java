@@ -4,6 +4,7 @@ import com.carrental.domain.model.car.Car;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -14,9 +15,9 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String dateOfBooking;
-    private String beginningOfRent;
-    private String endOfRent;
+    private LocalDate dateOfBooking;
+    private LocalDate beginningOfRent;
+    private LocalDate endOfRent;
     private Integer price;
 
     @ManyToOne
